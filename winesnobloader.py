@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 """
+Created on Sat Dec 22 07:36:17 2018
+
+@author: Samson
+"""
+
+# -*- coding: utf-8 -*-
+"""
 Created on Wed Dec 19 10:01:36 2018
 
 @author: Samson
@@ -39,26 +46,14 @@ hyperparameters = {'randomforestregressor__max_features' : ['auto','sqrt', 'log2
                    'randomforestregressor__max_depth':[None, 5, 3, 1]}
 
 
-#7 Tune model using a cross-validation pipeline
-clf = GridSearchCV(pipeline, hyperparameters, cv=10)
-
-
-#Fit and tune model
-clf.fit(X_train, y_train)
-#clf = joblib.load('rf_regressor.pkl')
+#X Load model
+clf = joblib.load('rf_regressor.pkl')
 print('loaded model!')
 
 
-#8 Refit on the entire training set
-print(clf.refit)
-
 #9 Evaluate model pipeline on test data
 y_pred = clf.predict(X_test)
-
 print(r2_score(y_test, y_pred))
 print(mean_squared_error(y_test, y_pred))
-
-#10 Save model for future use
-joblib.dump(clf, 'rf_regressor.pkl')
 
 print('done!')
