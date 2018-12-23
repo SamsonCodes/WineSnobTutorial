@@ -41,11 +41,6 @@ scaler = preprocessing.StandardScaler().fit(X_train)
 pipeline = make_pipeline(preprocessing.StandardScaler(), RandomForestRegressor(n_estimators=100))
 
 
-#6 Declare hyperparameters to tune
-hyperparameters = {'randomforestregressor__max_features' : ['auto','sqrt', 'log2'],
-                   'randomforestregressor__max_depth':[None, 5, 3, 1]}
-
-
 #X Load model
 clf = joblib.load('rf_regressor.pkl')
 print('loaded model!')
