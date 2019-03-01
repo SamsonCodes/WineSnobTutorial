@@ -50,5 +50,9 @@ print('loaded model!')
 y_pred = clf.predict(X_test)
 print(r2_score(y_test, y_pred))
 print(mean_squared_error(y_test, y_pred))
-
+y_pred = list(y_pred)
+y_test = list(y_test)
+print(len(y_pred) - len(y_test))
+for x in range(0, 10):
+        print("prediction: " + str(y_test[x]) + " --> " + str(y_pred[x]))
 print('done!')
