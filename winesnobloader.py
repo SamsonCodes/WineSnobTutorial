@@ -48,11 +48,16 @@ print('loaded model!')
 
 #9 Evaluate model pipeline on test data
 y_pred = clf.predict(X_test)
-print(r2_score(y_test, y_pred))
-print(mean_squared_error(y_test, y_pred))
+print("r2=" + str(r2_score(y_test, y_pred)))
+print("mse=" + str(mean_squared_error(y_test, y_pred)))
 y_pred = list(y_pred)
 y_test = list(y_test)
-print(len(y_pred) - len(y_test))
-for x in range(0, 10):
-        print("prediction: " + str(y_test[x]) + " --> " + str(y_pred[x]))
+
+correct = 0
+for x in range(0, len(y_test)):
+    if round(y_pred[x]) == round(y_test[x]):
+        correct += 1
+    else:        
+        print("False prediction: " + str(round(y_test[x])) + " --> " + str(round(y_pred[x])))
+print("Accuracy = " + str(correct/len(y_test)))
 print('done!')
